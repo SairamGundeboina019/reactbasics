@@ -1,0 +1,64 @@
+/* styles.css */
+:root {
+  --bg-color-light: #ffffff;
+  --text-color-light: #000000;
+  --bg-color-dark: #000000;
+  --text-color-dark: #ffffff;
+  --transition-speed: 0.3s;
+}
+
+body {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Theme Switcher */
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Starry Background */
+#solar-system {
+  background: black;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+#solar-system::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('stars.png') repeat;
+  animation: starsMove 20s linear infinite;
+}
+
+@keyframes starsMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* Planet Animations */
+.planet {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  animation: orbit 10s linear infinite;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
